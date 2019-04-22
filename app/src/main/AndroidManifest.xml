@@ -10,7 +10,8 @@
                  android:roundIcon="@mipmap/ic_launcher_round"
                  android:supportsRtl="true"
                  android:theme="@style/AppTheme" tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name=".features.search.SearchContainer">
+        <activity android:name=".features.search.SearchContainer"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>

@@ -13,7 +13,8 @@ interface FlickerApi {
         @Query("format") format: Formats,
         @Query("text") text: String,
         @Query("page") page: Number,
-        @Query("nojsoncallback") noJsonCallback: NoJsonCallback
+        @Query("nojsoncallback") noJsonCallback: NoJsonCallback,
+        @Query("extras") extras: String
     ) : Single<QueryApiResponse>
 
     companion object {
@@ -35,6 +36,14 @@ interface FlickerApi {
 
         enum class Methods(val toString: String) {
             SEARCH("flickr.photos.search");
+
+            override fun toString(): String {
+                return toString
+            }
+        }
+
+        enum class Extras(val toString: String) {
+            URL_SMALL("url_s");
 
             override fun toString(): String {
                 return toString

@@ -12,7 +12,10 @@ class FlickrApiService(private val flickrApi: FlickerApi, private val apiKey: St
             format = FlickerApi.Companion.Formats.JSON,
             noJsonCallback = FlickerApi.Companion.NoJsonCallback.TRUE,
             text = text,
-            page = page
+            page = page,
+            extras = listOf(
+                FlickerApi.Companion.Extras.URL_SMALL
+            ).joinToString (",")
         )
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

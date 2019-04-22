@@ -1,6 +1,7 @@
 package neilbantoc.affirm.features.search
 
 import neilbantoc.framework.view.ObservableViewActions
+import neilbantoc.framework.view.ViewAction
 
 class SearchContract {
 
@@ -8,8 +9,14 @@ class SearchContract {
 
         interface EventHandler
 
-        class ViewActions : ObservableViewActions
+        class ViewActions : ObservableViewActions {
+            val scroll = ViewAction<Int>()
+            val itemsTillEnd = ViewAction<Int>()
+        }
     }
 
-    interface Container
+    interface Container {
+        fun hideSystemUI()
+        fun showSystemUI()
+    }
 }
