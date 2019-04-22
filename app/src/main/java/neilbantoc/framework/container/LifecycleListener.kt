@@ -1,0 +1,3 @@
+package neilbantoc.framework.container
+
+interface LifecycleListener
