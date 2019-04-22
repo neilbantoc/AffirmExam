@@ -22,8 +22,14 @@ android {
     }
     buildTypes {
         release {
+            buildConfigField 'String', "FlickrApiKey", FlickrApiKey
+            resValue 'string', "FlickrApiKey", FlickrApiKey
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            buildConfigField 'String', "FlickrApiKey", FlickrApiKey
+            resValue 'string', "FlickrApiKey", FlickrApiKey
         }
     }
 }
@@ -48,4 +54,6 @@ dependencies {
     implementation 'com.google.android.material:material:1.0.0'
 
     implementation 'com.squareup.picasso:picasso:2.71828'
+
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.4.1'
 }
