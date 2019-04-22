@@ -17,6 +17,7 @@ import neilbantoc.framework.utils.BindableAdapter
 
 class SearchView : SearchContract.View, BaseView<SearchState, SearchContract.View.ViewActions, ActivitySearchBinding>(actions= SearchContract.View.ViewActions(), resId = R.layout.activity_search) {
 
+
     val scrollListener = object : RecyclerView.OnScrollListener() {
         override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
             super.onScrolled(recyclerView, dx, dy)
@@ -38,6 +39,11 @@ class SearchView : SearchContract.View, BaseView<SearchState, SearchContract.Vie
         dataBinding.recyclerView.addOnScrollListener(scrollListener)
     }
 
+    override fun clearPhotos() {
+        val adapter = dataBinding.recyclerView.adapter as PhotoAdapter
+        adapter.clear()
+    }
+
     class PhotoAdapter() : BindableAdapter<Collection<Photo>?>, RecyclerView.Adapter<PhotoAdapter.Holder>() {
 
         private val items = LinkedHashSet<Photo>()
@@ -47,6 +53,10 @@ class SearchView : SearchContract.View, BaseView<SearchState, SearchContract.Vie
                 items.addAll(data)
                 notifyDataSetChanged()
             }
+        }
+
+        fun clear() {
+            items.clear()
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {

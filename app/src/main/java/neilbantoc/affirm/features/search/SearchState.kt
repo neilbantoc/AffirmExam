@@ -8,4 +8,5 @@ class SearchState : ViewState() {
     val photos = ObservableField<ArrayList<Photo>>()
     val page = ObservableField<Int>()
     val text = ObservableField<String>()
+    val immersive = ObservableField<Boolean>()
 }

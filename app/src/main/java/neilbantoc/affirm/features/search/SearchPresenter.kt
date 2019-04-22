@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit
 
 class SearchPresenter(state: SearchState, view: SearchView, container: SearchContainer, val flickrApiService: FlickrApiService): SearchContract.View.EventHandler, BasePresenter<SearchState, SearchView, SearchContract.View.ViewActions, SearchContainer>(state, view, container) {
 
+
     private var scrollingDown = false
     private var fetching = false
 
@@ -18,9 +19,10 @@ class SearchPresenter(state: SearchState, view: SearchView, container: SearchCon
 
     override fun onViewInitialized() {
         super.onViewInitialized()
+
         state.page.set(0)
-        state.text.set("dogs")
-        fetchItems()
+        state.immersive.set(false)
+
         addDisposable(view.actions.scroll.observable()
             .sample(200, TimeUnit.MILLISECONDS)
             .observeOn(AndroidSchedulers.mainThread())
@@ -32,6 +34,7 @@ class SearchPresenter(state: SearchState, view: SearchView, container: SearchCon
                     container.showSystemUI()
                     scrollingDown = false
                 }
+                state.immersive.set(scrollingDown)
         })
 
         addDisposable(view.actions.itemsTillEnd.observable()
@@ -42,6 +45,13 @@ class SearchPresenter(state: SearchState, view: SearchView, container: SearchCon
             }, { error ->
                 error.printStackTrace()
             }))
+    }
+
+    override fun onSearchClick() {
+        state.page.set(0)
+        state.photos.get()?.clear()
+        view.clearPhotos()
+        fetchItems()
     }
 
     private fun fetchItems() {

@@ -6,4 +6,6 @@
 
     <color name="gridTitle">#ffffff</color>
     <color name="gridBackground">#66000000</color>
+
+    <color name="sheetBackground">#ffffff</color>
 </resources>

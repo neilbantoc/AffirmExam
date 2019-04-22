@@ -4,6 +4,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="state"
             type="neilbantoc.affirm.features.search.SearchState" />
@@ -15,13 +17,38 @@
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:data="@{state.photos}" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_gravity="top"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="56dp"
+            android:layout_marginRight="16dp"
+            android:background="@color/sheetBackground"
+            android:hint="@string/search"
+            android:padding="8dp"
+            android:text="@={state.text}"
+            android:visibility="@{state.immersive ? View.GONE : View.VISIBLE}" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="56dp"
+            android:onClick="@{_->eventhandler.onSearchClick()}"
+            android:src="@drawable/ic_search_white_24dp"
+            android:visibility="@{state.immersive ? View.GONE : View.VISIBLE}" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

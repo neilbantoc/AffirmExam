@@ -7,7 +7,11 @@ class SearchContract {
 
     interface View : neilbantoc.framework.view.View<View.ViewActions> {
 
-        interface EventHandler
+        fun clearPhotos()
+
+        interface EventHandler {
+            fun onSearchClick()
+        }
 
         class ViewActions : ObservableViewActions {
             val scroll = ViewAction<Int>()
