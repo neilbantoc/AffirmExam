@@ -53,7 +53,7 @@ class SearchPresenter(state: SearchState, view: SearchView, container: SearchCon
                     state.photos.get()?.apply {
                         items.addAll(this)
                     }
-                    items.addAll(this.photos)
+                    items.addAll(this.photos.filter { it.urlSmall != null })
                     state.photos.set(items)
                     state.page.set(state.page.get()!! + 1)
                     fetching = false

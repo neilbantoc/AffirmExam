@@ -31,11 +31,11 @@
             android:layout_gravity="bottom"
             android:background="@color/gridBackground"
             android:padding="8dp"
-            android:singleLine="true"
             android:text="@{photo.title}"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             android:textColor="@color/gridTitle"
-            android:textSize="18sp"
+            android:textSize="12sp"
+            android:maxLines="2"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
