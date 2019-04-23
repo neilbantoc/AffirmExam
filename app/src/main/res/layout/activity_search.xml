@@ -36,6 +36,7 @@
             android:background="@color/sheetBackground"
             android:hint="@string/search"
             android:padding="8dp"
+            android:singleLine="true"
             android:text="@={state.text}"
             android:visibility="@{state.immersive ? View.GONE : View.VISIBLE}" />
 

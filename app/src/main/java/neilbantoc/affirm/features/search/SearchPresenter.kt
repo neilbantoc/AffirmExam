@@ -51,6 +51,7 @@ class SearchPresenter(state: SearchState, view: SearchView, container: SearchCon
         state.page.set(0)
         state.photos.get()?.clear()
         view.clearPhotos()
+        container.hideKeyboard()
         fetchItems()
     }
 

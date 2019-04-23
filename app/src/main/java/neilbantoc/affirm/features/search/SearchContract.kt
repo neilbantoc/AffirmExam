@@ -22,5 +22,6 @@ class SearchContract {
     interface Container {
         fun hideSystemUI()
         fun showSystemUI()
+        fun hideKeyboard()
     }
 }
