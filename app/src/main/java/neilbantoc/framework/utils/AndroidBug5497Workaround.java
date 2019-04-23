@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 //http://stackoverflow.com/questions/7417123/android-how-to-adjust-layout-in-full-screen-mode-when-softkeyboard-is-visible
 public class AndroidBug5497Workaround {
 
-
     private static AndroidBug5497Workaround mInstance = null;
     private View mChildOfContent;
     private int usableHeightPrevious;
